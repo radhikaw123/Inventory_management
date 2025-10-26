@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders - Inventory Management System</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1 class="logo">📦 Inventory Pro</h1>
+            <ul class="nav-menu">
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="products.html">Products</a></li>
+                <li><a href="orders.html" class="active">Orders</a></li>
+                <li><a href="inventory.html">Inventory</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="container">
+        <header class="page-header">
+            <h2>Orders Management</h2>
+            <button class="btn btn-primary" onclick="showCreateOrderModal()">➕ Create Order</button>
+        </header>
+
+        <div class="table-container">
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Order Number</th>
+                        <th>Customer</th>
+                        <th>Email</th>
+                        <th>Date</th>
+                        <th>Total</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="ordersTable">
+                    <tr><td colspan="7" class="loading">Loading orders...</td></tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <!-- Create Order Modal -->
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeOrderModal()">&times;</span>
+            <h2>Create New Order</h2>
+            <form id="orderForm">
+                <h3>Customer Information</h3>
+                <div class="form-group">
+                    <label>Customer Name *</label>
+                    <input type="text" id="customerName" required>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="customerEmail">
+                </div>
+                <div class="form-group">
+                    <label>Phone</label>
+                    <input type="text" id="customerPhone">
+                </div>
+
+                <h3>Add Items</h3>
+                <div id="orderItems" class="order-items"></div>
+                <button type="button" class="btn btn-secondary" onclick="addOrderItem()">➕ Add Item</button>
+
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeOrderModal()">Cancel</button>
+                    <button type="submit" class="btn btn-primary">Create Order</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/orders.js"></script>
+</body>
+</html>
+

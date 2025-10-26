@@ -1,0 +1,100 @@
+================================================================================
+                    HOW TO CREATE .env FILE MANUALLY
+================================================================================
+
+STEP 1: Get your MySQL password
+---------------------------------
+Do you remember the password you set when installing MySQL?
+
+Common passwords people use:
+- root
+- password
+- root123
+- your_password
+- (empty/blank)
+
+If you forgot it, you can reset it (see below)
+
+================================================================================
+
+STEP 2: Create .env file
+--------------------------
+1. Open Notepad
+2. Copy and paste this EXACT content:
+
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=PUT_YOUR_MYSQL_PASSWORD_HERE
+DB_NAME=inventory_db
+PORT=3000
+
+3. Replace "PUT_YOUR_MYSQL_PASSWORD_HERE" with your actual MySQL password
+4. Save the file as: .env
+5. Make sure you save it in: C:\Web_dev
+   (The folder should have backend, frontend, database folders)
+
+IMPORTANT: The file MUST be named exactly: .env  (with the dot at the start!)
+          And it MUST be in C:\Web_dev folder!
+
+================================================================================
+
+STEP 3: Test your password
+----------------------------
+Open PowerShell in C:\Web_dev and run:
+
+    mysql -u root -p
+
+Enter your password when prompted.
+If you can connect, your password is correct!
+Type "exit" to close MySQL.
+
+================================================================================
+
+STEP 4: Setup database
+-----------------------
+After creating .env file, run:
+
+    node setup-database.js
+
+This will:
+- Create the inventory_db database
+- Create all tables
+- Insert sample data
+
+================================================================================
+
+STEP 5: Start server
+--------------------
+    npm start
+
+Then open: http://localhost:3000
+
+================================================================================
+
+RESET MYSQL PASSWORD (if needed)
+----------------------------------
+If you forgot your MySQL password:
+
+1. Open PowerShell as Administrator
+2. Stop MySQL:
+   net stop MySQL80
+
+3. Start MySQL in safe mode:
+   "C:\Program Files\MySQL\MySQL Server 8.0\bin\mysqld.exe" --console --skip-grant-tables --shared-memory
+
+4. Open another PowerShell window, run:
+   "C:\Program Files\MySQL\MySQL Server 8.0\bin\mysql.exe" -u root
+
+5. Type these commands in MySQL:
+   ALTER USER 'root'@'localhost' IDENTIFIED BY 'newpassword';
+   FLUSH PRIVILEGES;
+   exit;
+
+6. Close both PowerShell windows
+7. Restart MySQL service:
+   net start MySQL80
+
+Now use 'newpassword' as your password.
+
+================================================================================
+

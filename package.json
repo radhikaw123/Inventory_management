@@ -1,0 +1,33 @@
+{
+  "name": "inventory-management-system",
+  "version": "1.0.0",
+  "description": "A modern inventory management system with HTML, CSS, JavaScript, and MySQL",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "nodemon backend/server.js",
+    "test": "node backend/server-simple.js",
+    "setup:env": "node setup-env.js",
+    "setup:db": "node setup-database.js",
+    "setup": "npm run setup:env && npm run setup:db"
+  },
+  "keywords": [
+    "inventory",
+    "management",
+    "mysql",
+    "express"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "mysql2": "^3.6.5",
+    "dotenv": "^16.3.1",
+    "cors": "^2.8.5",
+    "body-parser": "^1.20.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}
+
